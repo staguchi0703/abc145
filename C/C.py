@@ -16,6 +16,28 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-num_list = [int(item) for item in input().split()]
-print('C', num_list)
+import itertools
+import math
+
+num = int(input())
+town_list = [[int(item) for item in input().split()] for _ in range(num)]
+
+root_list = list(itertools.permutations(list(range(num))))
+
+length = 0
+
+for root in root_list:
+    for i in range(num-1):
+        temp_path = root[i:i+2]
+        first = temp_path[0]
+        second = temp_path[1]
+
+        x_length = town_list[first][0] - town_list[second][0]
+        y_length = town_list[first][1] - town_list[second][1]
+
+
+        length += math.sqrt(x_length**2 + y_length**2)
+print(length / len(root_list))
+
+
 

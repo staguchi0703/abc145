@@ -16,6 +16,17 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-num_list = [int(item) for item in input().split()]
-print('B', num_list)
+num = int(input())
+s = input()
+
+if num%2 == 0:
+    a = int(num /2)
+    half_s = s[:a]
+
+    if half_s == s[a:]:
+        print('Yes')
+    else:
+        print('No')
+else:
+    print('No')
 

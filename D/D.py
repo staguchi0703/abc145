@@ -16,6 +16,29 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-num_list = [int(item) for item in input().split()]
-print('D',num_list)
+X, Y = [int(item) for item in input().split()]
 
+if X < Y:
+    X, Y = Y, X
+
+
+def judge(x, y):
+    if x == 2*y:
+        return y
+    else: return -1
+
+num = Y // 3 + 1
+temp_root = 0
+res = 0
+
+if judge(X, Y) < 0:
+
+    for i in range(1,num):
+        X, Y = X - 3, Y - 3
+        temp_root += 2**i
+        if judge(X, Y) >= 0:
+            res = judge(X, Y) + temp_root
+            break
+    print(res % (10**9 + 7))
+else:
+    print(judge(X, Y) % (10**9 + 7))
